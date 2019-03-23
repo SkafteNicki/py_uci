@@ -28,7 +28,7 @@ class Dataset(object):
         
         # Read files and format into arrays
         self._formatter()
-        
+                
     def _downloader(self):
         # Create directory for files
         d = get_dir(__file__)
@@ -48,6 +48,10 @@ class Dataset(object):
                 filepage = self.weblink + link.get('href')
                 filename = download_file(filepage, loc)
                 self.files.append(filename)
+    
+    def normalize_features(self):
+        self.data = self.data - self.data.axis(dim=1)
+        self.data = self.data / self.data.std(dim=1)
     
     def test_train_split(self, test_size, seed=None):
         seed = seed if seed is not None else np.random.randint(0,1e6)

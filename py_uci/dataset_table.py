@@ -25,4 +25,5 @@ T.row_append(['iris', 150, 'classification', 'https://archive.ics.uci.edu/ml/mac
 T.row_append(['wine_quality', 6497, 'classification', 'https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/'])
 T.row_append(['wine_red', 4898, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/'])
 T.row_append(['wine_white', 1599, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/'])
+T.row_append(['boston', 506, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/'])
 
