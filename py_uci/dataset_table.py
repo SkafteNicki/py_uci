@@ -20,8 +20,9 @@ class mydataframe(pd.DataFrame):
         return self[self['Name'] == name].values[0]
 
 #%%
-T = mydataframe(columns = ['Name', 'Size', 'Type', 'weblink'])
+T = mydataframe(columns = ['Name', 'Size', 'Task', 'weblink'])
 T.row_append(['iris', 150, 'classification', 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/'])
 T.row_append(['wine_quality', 6497, 'classification', 'https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/'])
 T.row_append(['wine_red', 4898, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/'])
 T.row_append(['wine_white', 1599, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/'])
+

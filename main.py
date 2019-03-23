@@ -12,9 +12,6 @@ Created on Thu Mar 21 14:58:36 2019
 import py_uci
 datasets = py_uci.get_all()
 
-for d in datasets:
-    if not hasattr(d, 'dataframe'):
-        print('problem with ', d)
 
 #d = D.iris()
 

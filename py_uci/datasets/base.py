@@ -17,7 +17,7 @@ from ..utility import get_dir, download_file
 class Dataset(object):
     def __init__(self):
         # Set class properties based on data table
-        self.name, self.size, self.type, self.weblink = \
+        self.name, self.size, self.task, self.weblink = \
             T.unpack(self.__class__.__name__)
         
         # Initialize some structures

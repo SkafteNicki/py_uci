@@ -8,6 +8,7 @@ Created on Thu Mar 21 16:47:02 2019
 #%%
 import os, requests
 import numpy as np
+from .dataset_table import T
 
 #%%
 def get_path(file):
@@ -55,3 +56,7 @@ def convert_to_numeric(str_target, labels):
     for i, l in enumerate(labels):
         num_target[np.where(str_target==l)] = i
     return num_target
+
+#%%
+def print_datasets():
+    print(T)
