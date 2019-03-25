@@ -29,3 +29,4 @@ T.row_append(['boston', 506, 'regression', 'https://archive.ics.uci.edu/ml/machi
 T.row_append(['power_plant', 9568, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00294/'])
 T.row_append(['carbon_nanotubes', 10721, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00448/'])
 T.row_append(['forest_fire', 517, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/forest-fires/'])
+T.row_append(['concrete', 1030, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/concrete/compressive/'])
