@@ -31,3 +31,4 @@ T.row_append(['carbon_nanotubes', 10721, 'regression', 'https://archive.ics.uci.
 T.row_append(['forest_fire', 517, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/forest-fires/'])
 T.row_append(['concrete', 1030, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/concrete/compressive/'])
 T.row_append(['superconduct', 21263, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00464/'])
+T.row_append(['bike_sharing', 17389, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00275/'])
