@@ -10,3 +10,4 @@ from .iris import iris
 from .wine_quality import wine_quality, wine_red, wine_white
 from .boston import boston
 from .power_plant import power_plant
+from .carbon_nanotubes import carbon_nanotubes
