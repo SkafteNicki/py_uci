@@ -13,13 +13,11 @@ from ..utility import convert_to_numeric
 
 #%%
 class boston(Dataset):
-    def _formatter(self):
+    def _create_dataframe(self):
         for f in self.files:
             if 'housing.data' in f:
                 df = pd.read_csv(f, delim_whitespace=True)
         self.dataframe = df        
-        self.attribute_name = ['CRIM', 'ZN', 'INDUS', 'CHAS',
-                               'NOX', 'RM', 'AGE', 'DIS', 'RAD',
-                               'TAX', 'PTRATIO', 'B', 'LSTAT']
-        self.data = df.values[:,:-1].astype('float32')
-        self.target = df.values[:,-1].astype('float32')
+        self.dataframe.columns = ['CRIM', 'ZN', 'INDUS', 'CHAS',
+                                  'NOX', 'RM', 'AGE', 'DIS', 'RAD',
+                                  'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV']

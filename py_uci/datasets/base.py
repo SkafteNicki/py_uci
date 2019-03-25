@@ -9,9 +9,10 @@ from bs4 import BeautifulSoup
 import requests
 import os
 import numpy as np
+import pandas as pd
 
 from ..dataset_table import T
-from ..utility import get_dir, download_file
+from ..utility import get_dir, download_file, check_if_file_exist, convert_to_numeric
 
 #%%
 class Dataset(object):
@@ -19,6 +20,8 @@ class Dataset(object):
         # Set class properties based on data table
         self.name, self.size, self.task, self.weblink = \
             T.unpack(self.__class__.__name__)
+        self.loc = get_dir(__file__) + '/../../downloaded_datasets/' + \
+                   self.weblink.split('/')[-2].replace('-','_')
         
         # Initialize some structures
         self.files = [ ]
@@ -26,16 +29,17 @@ class Dataset(object):
         # Download files
         self._downloader()
         
-        # Read files and format into arrays
-        self._formatter()
+        # Read files and format dataframe
+        if not check_if_file_exist(self.loc + '/processed_' + self.name + '.pkl'):
+            self._create_dataframe()
+            self._save_dataframe()
+        else:
+            self._load_dataframe()
                 
     def _downloader(self):
         # Create directory for files
-        d = get_dir(__file__)
-        loc = d + '/../../downloaded_datasets/' + \
-              self.weblink.split('/')[-2].replace('-','_')
-        if not os.path.exists(loc):
-            os.makedirs(loc)
+        if not os.path.exists(self.loc):
+            os.makedirs(self.loc)
 
         # Scrape through webpage
         r = requests.get(self.weblink)
@@ -46,39 +50,15 @@ class Dataset(object):
         for i, link in enumerate(soup.find_all('a')):
             if i > 4:
                 filepage = self.weblink + link.get('href')
-                filename = download_file(filepage, loc)
+                filename = download_file(filepage, self.loc)
                 self.files.append(filename)
     
-    def normalize_features(self):
-        self.data = self.data - self.data.axis(dim=1)
-        self.data = self.data / self.data.std(dim=1)
-    
-    def test_train_split(self, test_size, seed=None):
-        seed = seed if seed is not None else np.random.randint(0,1e6)
-        np.random.seed(seed)
-        idx = np.random.permutation(self.N)
-        test_size = int(np.round(self.N*test_size))
-        test = idx[:test_size]
-        train = idx[test_size:]
-        return train, test
-    
-    def cv_split(self, K=2, holdout_size = 0.1, seed=None):
-        seed = seed if seed is not None else np.random.randint(0,1e6)
-        np.random.seed(seed)
-        idx = np.random.permutation(self.N)
-        holdout_size = int(np.round(self.N*holdout_size))
-        cv_size = int(np.round((self.N - holdout_size)/K))
-        holdout = idx[:holdout_size]
-        remaining = idx[holdout_size:]
-        remaining = [remaining[k*cv_size:(k+1)*cv_size] for k in range(K)]
-        cvs_train = [ ]
-        cvs_val = [ ]
-        for k in range(K):
-            cvs_train.append(np.concatenate(
-                [remaining[kk] for kk in range(K) if kk != k], axis=0))
-            cvs_val.append(remaining[k])
-        return cvs_train, cvs_val, holdout
+    def _save_dataframe(self):
+        self.dataframe.to_pickle(self.loc + '/processed_' + self.name + '.pkl')
         
+    def _load_dataframe(self):
+        self.dataframe = pd.read_pickle(self.loc + '/processed_' + self.name + '.pkl')
+            
     @property
     def N(self):
         return self.data.shape[0]
@@ -86,8 +66,20 @@ class Dataset(object):
     @property
     def d(self):
         return self.data.shape[1]
-        
-    def _formatter():
+    
+    @property
+    def data(self):
+        return self.dataframe.values[:,:-1].astype('float32')
+    
+    @property
+    def target(self):
+        return convert_to_numeric(self.dataframe.values[:,-1])
+    
+    @property
+    def attribute_names(self):
+        return list(self.dataframe)
+    
+    def _create_dataframe():
         raise NotImplementedError
         
         

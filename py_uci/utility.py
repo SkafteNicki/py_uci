@@ -51,12 +51,16 @@ def download_file(url,directory):
     return local_filename
             
 #%% 
-def convert_to_numeric(str_target, labels):
-    num_target = np.zeros_like(str_target)
-    for i, l in enumerate(labels):
-        num_target[np.where(str_target==l)] = i
-    return num_target
-
+def convert_to_numeric(input_target):
+    if input_target.dtype == 'object':
+        out_target = np.zeros_like(input_target)
+        labels = np.unique(input_target)
+        for i, l in enumerate(labels):
+            out_target[np.where(input_target==l)] = i
+        return out_target
+    else:
+        return input_target
+    
 #%%
 def print_datasets():
     print(T)
