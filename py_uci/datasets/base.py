@@ -58,7 +58,12 @@ class Dataset(object):
         
     def _load_dataframe(self):
         self.dataframe = pd.read_pickle(self.loc + '/processed_' + self.name + '.pkl')
-            
+    
+    def _update_files_list(self):
+        self.files = [ ]
+        for f in os.listdir(self.loc):
+            self.files.append(self.loc + '/' + f)
+    
     @property
     def N(self):
         return self.data.shape[0]

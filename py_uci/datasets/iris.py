@@ -8,9 +8,7 @@ Created on Fri Mar 22 09:31:40 2019
 
 #%%
 import pandas as pd
-import numpy as np
 from .base import Dataset
-from ..utility import convert_to_numeric
 
 #%%
 class iris(Dataset):
