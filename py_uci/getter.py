@@ -21,9 +21,15 @@ def get_by_filter(task=None, size_min = 0, size_max = 1e20):
     datasets = [ ]
     for _, d in T.iterrows():
         if (d['Task'] in task) and (size_min < d['Size'] < size_max):
-            datasets.append(eval('D.'+str(d['name']))())
+            datasets.append(eval('D.'+str(d['Name']))())
     return datasets
  
 #%% 
-def get(name):
-    return eval('D.'+str(name))()
+def get(*names):
+    if len(names) == 1:
+        return eval('D.'+str(names[0]))()
+    else:
+        datasets = [ ]
+        for n in names:
+            datasets.append(eval('D.'+str(n))())
+        return datasets

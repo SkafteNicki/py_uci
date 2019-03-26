@@ -32,3 +32,4 @@ T.row_append(['forest_fire', 517, 'regression', 'https://archive.ics.uci.edu/ml/
 T.row_append(['concrete', 1030, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/concrete/compressive/'])
 T.row_append(['superconduct', 21263, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00464/'])
 T.row_append(['bike_sharing', 17389, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00275/'])
+T.row_append(['navel', 11934, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00316/'])

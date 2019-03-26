@@ -7,5 +7,4 @@ Created on Thu Mar 21 14:58:36 2019
 
 #%%
 import py_uci
-datasets = py_uci.get_all()
 
