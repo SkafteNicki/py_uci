@@ -16,3 +16,5 @@ from .concrete import concrete
 from .superconduct import superconduct
 from .bike_sharing import bike_sharing
 from .navel import navel
+from .yacht_hydrodynamics import yacht_hydrodynamics
+from .protein_structure import protein_structure

@@ -33,3 +33,5 @@ T.row_append(['concrete', 1030, 'regression', 'https://archive.ics.uci.edu/ml/ma
 T.row_append(['superconduct', 21263, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00464/'])
 T.row_append(['bike_sharing', 17389, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00275/'])
 T.row_append(['navel', 11934, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00316/'])
+T.row_append(['yacht_hydrodynamics', 308, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00243/'])
+T.row_append(['protein_structure', 45730, 'regression', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00265/'])

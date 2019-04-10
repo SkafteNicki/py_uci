@@ -48,7 +48,7 @@ class Dataset(object):
         
         # Download all files
         for i, link in enumerate(soup.find_all('a')):
-            if i > 4:
+            if i >= 1: # first is always link to parent directory
                 filepage = self.weblink + link.get('href')
                 filename = download_file(filepage, self.loc)
                 self.files.append(filename)
