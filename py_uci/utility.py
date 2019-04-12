@@ -8,7 +8,7 @@ Created on Thu Mar 21 16:47:02 2019
 #%%
 import os, requests
 import numpy as np
-from .dataset_table import T
+import pandas as pd
 
 #%%
 def get_path(file):
@@ -29,6 +29,35 @@ def create_dir(direc):
 #%%
 def check_if_file_exist(file):
     return os.path.isfile(file)
+
+#%%
+def get_uci_table():
+    try:
+        d = get_dir(__file__)
+        if not check_if_file_exist(d + '/' + 'database.csv'):
+            print('Initializing dataset table')
+            df = pd.read_html('https://archive.ics.uci.edu/ml/datasets.php')
+            df = df[5] # all the dataset information is stored here
+            header = df.iloc[0]
+            header[0] = 'Name'
+            df = pd.DataFrame(df.values[1:], columns=header.values)
+            df.to_csv(d + '/' + 'database.csv', sep=',', na_rep='nan', index=False)
+        else:
+            df = pd.read_csv(d + '/' + 'database.csv', sep=',')
+        return df
+    except:
+        print('Could not initialize database of datasets')
+        
+#%%
+def add_and_clean_uci_table(uci_table):
+    df = pd.DataFrame(
+            [
+             ['Housing', 'Multivariate', 'Regression', 'Real', 506, 14, 1993],
+             ['Wine Red', 'Multivariate', 'Regression', 'Real', 4898, 13, 1991],
+             ['Wine White', 'Multivariate', 'Regression', 'Real', 1599, 13, 1991]
+            ], 
+            columns=uci_table.columns)
+    df['download_link'] = 
 
 #%%
 def download_file(url,directory):
@@ -60,7 +89,3 @@ def convert_to_numeric(input_target):
         return out_target
     else:
         return input_target
-    
-#%%
-def print_datasets():
-    print(T)

@@ -7,5 +7,5 @@ Created on Thu Mar 21 14:58:36 2019
 
 #%%
 import py_uci
-d1 = py_uci.get('yacht_hydrodynamics')
-d2 = py_uci.get('protein_structure')
+datasets = py_uci.datasets
+dataset = py_uci.get('Housing')
