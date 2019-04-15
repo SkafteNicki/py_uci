@@ -7,7 +7,7 @@ Created on Mon Mar 25 11:58:55 2019
 
 #%%
 import pandas as pd
-from .base import Dataset
+from ..base import Dataset
 from ..utility import convert_to_numeric
 
 #%%

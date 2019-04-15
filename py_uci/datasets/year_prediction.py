@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Mar 25 12:50:56 2019
+Created on Fri Apr 12 19:38:27 2019
 
 @author: nsde
 """
@@ -11,11 +11,11 @@ from ..base import Dataset
 import zipfile
 
 #%%
-class bike_sharing(Dataset):
+class year_prediction(Dataset):
     def _create_dataframe(self):
         # Extract .zip file
         for f in self.files:
-            if 'Bike-Sharing-Dataset.zip' in f:
+            if 'YearPredictionMSD.txt.zip' in f:
                 zipref = zipfile.ZipFile(f, 'r')
                 zipref.extractall('/'.join(f.split('/')[:-1]))
                 zipref.close()
@@ -24,9 +24,7 @@ class bike_sharing(Dataset):
                
         # Get dataframe
         for f in self.files:
-            if 'day.csv' in f:
+            if 'YearPredictionMSD.txt' in f:
                 df = pd.read_csv(f)
-        df = df.drop('instant', 1)
-        df = df.drop('dteday', 1)
         self.dataframe = df
         

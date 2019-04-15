@@ -7,11 +7,11 @@ Created on Tue Mar 26 07:52:22 2019
 
 #%%
 import pandas as pd
-from .base import Dataset
+from ..base import Dataset
 import zipfile, os
 
 #%%
-class navel(Dataset):
+class naval(Dataset):
     def _create_dataframe(self):
         # Extract .zip file
         for f in self.files:

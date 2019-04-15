@@ -8,7 +8,7 @@ Created on Fri Mar 22 09:31:40 2019
 
 #%%
 import pandas as pd
-from .base import Dataset
+from ..base import Dataset
 
 #%%
 class iris(Dataset):

@@ -6,15 +6,30 @@ Created on Thu Mar 21 14:55:15 2019
 """
 
 #%%
-from .iris import iris
-from .wine_quality import wine_quality, wine_red, wine_white
-from .boston import boston
-from .power_plant import power_plant
-from .carbon_nanotubes import carbon_nanotubes
-from .forest_fire import forest_fire
-from .concrete import concrete
-from .superconduct import superconduct
+from .abalone import abalone
+from .adult import adult
+from .auto_mpg import auto_mpg
+
 from .bike_sharing import bike_sharing
-from .navel import navel
-from .yacht_hydrodynamics import yacht_hydrodynamics
+from .blood_pressure import blood_pressure
+from .boston import boston
+
+from .carbon_nanotubes import carbon_nanotubes
+from .concrete import concrete
+
+from .forest_fire import forest_fire
+
+from .iris import iris
+
+from .naval import naval
+
+from .parkinsons import parkinsons
+from .power_plant import power_plant
 from .protein_structure import protein_structure
+
+from .superconduct import superconduct
+
+from .wine_quality import wine_quality, wine_red, wine_white
+
+from .yacht_hydrodynamics import yacht_hydrodynamics
+from .year_prediction import year_prediction

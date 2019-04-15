@@ -57,7 +57,7 @@ def convert_to_numeric(input_target):
         labels = np.unique(input_target)
         for i, l in enumerate(labels):
             out_target[np.where(input_target==l)] = i
-        return out_target
+        return out_target.astype(np.float32)
     else:
         return input_target
     

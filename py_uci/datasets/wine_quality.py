@@ -9,7 +9,7 @@ Created on Fri Mar 22 10:04:24 2019
 #%%
 import pandas as pd
 import numpy as np
-from .base import Dataset
+from ..base import Dataset
 
 #%%
 class wine_quality(Dataset):

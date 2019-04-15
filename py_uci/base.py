@@ -11,16 +11,16 @@ import os
 import numpy as np
 import pandas as pd
 
-from ..dataset_table import T
-from ..utility import get_dir, download_file, check_if_file_exist, convert_to_numeric
+from .dataset_table import T
+from .utility import get_dir, download_file, check_if_file_exist, convert_to_numeric
 
 #%%
 class Dataset(object):
-    def __init__(self):
+    def __init__(self, debug=True):
         # Set class properties based on data table
-        self.name, self.size, self.task, self.weblink = \
+        self.name, self.size, self.features, self.task, self.weblink = \
             T.unpack(self.__class__.__name__)
-        self.loc = get_dir(__file__) + '/../../downloaded_datasets/' + \
+        self.loc = get_dir(__file__) + '/../downloaded_datasets/' + \
                    self.weblink.split('/')[-2].replace('-','_')
         
         # Initialize some structures
@@ -32,9 +32,9 @@ class Dataset(object):
         # Read files and format dataframe
         if not check_if_file_exist(self.loc + '/processed_' + self.name + '.pkl'):
             self._create_dataframe()
-            self._save_dataframe()
+            if not debug: self._save_dataframe()
         else:
-            self._load_dataframe()
+            if not debug: self._load_dataframe()
                 
     def _downloader(self):
         # Create directory for files

@@ -7,5 +7,7 @@ Created on Thu Mar 21 14:58:36 2019
 
 #%%
 import py_uci
-d1 = py_uci.get('yacht_hydrodynamics')
-d2 = py_uci.get('protein_structure')
+ds = py_uci.get('protein_structure', 'adult', 'year_prediction', 'blood_pressure', 'parkinsons')
+#df = ds.dataframe
+#data = ds.data
+#target = ds.target
