@@ -6,8 +6,6 @@ Created on Thu Mar 21 14:58:36 2019
 """
 
 #%%
-import py_uci
-ds = py_uci.get('airfoil')
-df = ds.dataframe
-data = ds.data
-target = ds.target
+if __name__ == '__main__':
+    import py_uci
+    ds = py_uci.get('iris')

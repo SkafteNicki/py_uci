@@ -1,16 +1,15 @@
 # py_uci
 
-WORK IN PROGRESS
-
 Python library for loading data from the UCI Machine Learning Repository. I
-created this reposatory since I needed to test out some algorithms on multiple
-datasets and could not find a simple way to 
+created this repository since I needed to test out some algorithms on multiple
+datasets and could not find a simple python API that can be used to download
+a bunch of datasets. Therefore I created this small repo. 
 
 ## Install
 
 Simply clone the repo and install with `python setup.py install`. The repo
 depends mostly on numpy, pandas and other build in library. If you are running
-python through anaconda you should be good to go.
+python through anaconda, you should be good to go.
 
 ## How to use
 
@@ -54,6 +53,10 @@ can easily add your own datasets to the mix.
 
 Add a row with the name, size, type and weblink of the dataset to the `py_uci.dataset_table.py`
 file and secondly create a file in the datasets folder, where you implement the
-correponding class. This basically amounts to implementing the `.create_dataframe()`
-method for the class, everything else is taken care of the base class. Then finally 
-you can run the `test.py` file to check that the class extracts all nessesary information.
+correponding class. This basically amounts to implementing the `._create_dataframe(self)`
+method for the class. In most cases everything else is taken care of the base class.
+If this does not work, simply check out some of the other datasets on how to format
+the `.data` and `.target` attribute. Lastly add the newly implemented class in the
+`datasets/__init__.py` file.
+
+Feel free to send me a pull request with your implemented dataset.

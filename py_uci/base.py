@@ -16,7 +16,7 @@ from .utility import get_dir, download_file, check_if_file_exist, convert_to_num
 
 #%%
 class Dataset(object):
-    def __init__(self, debug=True):
+    def __init__(self, debug=False):
         # Set class properties based on data table
         self.name, self.size, self.features, self.task, self.weblink = \
             T.unpack(self.__class__.__name__)
@@ -74,11 +74,19 @@ class Dataset(object):
     
     @property
     def data(self):
-        return self.dataframe.values[:,:-1].astype('float32')
+        try:
+            return self.dataframe.values[:,:-1].astype('float32')
+        except:
+            raise ValueError('Could not convert the dataframe automatically.'
+                             'Need to do this yourself')
     
     @property
     def target(self):
-        return convert_to_numeric(self.dataframe.values[:,-1])
+        try:
+            return convert_to_numeric(self.dataframe.values[:,-1])
+        except:
+            raise ValueError('Could not convert the dataframe automatically.'
+                             'Need to do this yourself')
     
     @property
     def attribute_names(self):
