@@ -8,13 +8,14 @@ Created on Thu Mar 21 14:55:15 2019
 #%%
 from .abalone import abalone
 from .adult import adult
+from .airfoil import airfoil
 from .auto_mpg import auto_mpg
 
 from .bike_sharing import bike_sharing
-from .blood_pressure import blood_pressure
 from .boston import boston
 
 from .carbon_nanotubes import carbon_nanotubes
+from .communities_crime import communities_crime
 from .concrete import concrete
 
 from .forest_fire import forest_fire

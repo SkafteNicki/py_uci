@@ -27,3 +27,11 @@ class protein_structure(Dataset):
                       'F9 - Spacial Distribution constraints (N,K Value).']
         self.dataframe = df
         
+    @property
+    def data(self):
+        return self.dataframe.values[:,1:].astype('float32')
+    
+    @property
+    def target(self):
+        return self.dataframe.values[:,0]
+        

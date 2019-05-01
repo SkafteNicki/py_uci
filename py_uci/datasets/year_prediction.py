@@ -25,6 +25,15 @@ class year_prediction(Dataset):
         # Get dataframe
         for f in self.files:
             if 'YearPredictionMSD.txt' in f:
-                df = pd.read_csv(f)
+                df = pd.read_csv(f, header=None)
         self.dataframe = df
         
+    @property
+    def data(self):
+        return self.dataframe.values[:,1:].astype('float32')
+    
+    @property
+    def target(self):
+        return self.dataframe.values[:,0].astype('float32')
+    
+    

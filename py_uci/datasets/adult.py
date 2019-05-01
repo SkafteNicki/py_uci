@@ -9,6 +9,7 @@ Created on Fri Apr 12 18:59:03 2019
 #%%
 import pandas as pd
 from ..base import Dataset
+from ..utility import one_hot_encode, convert_to_numeric
 
 #%%
 class adult(Dataset):
@@ -25,5 +26,11 @@ class adult(Dataset):
                       'income']
         df['income'] = df['income'].replace(' <=50K.', '<=50K')
         df['income'] = df['income'].replace(' >50K.', '>50K')
+        df['income'] = df['income'].replace(' <=50K','<=50K')
+        df['income'] = df['income'].replace(' >50K','>50K')
         self.dataframe = df
         
+    @property
+    def data(self):
+        return one_hot_encode(self.dataframe.values[:,1:-1])
+    

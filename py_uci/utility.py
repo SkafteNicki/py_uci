@@ -9,6 +9,7 @@ Created on Thu Mar 21 16:47:02 2019
 import os, requests
 import numpy as np
 from .dataset_table import T
+from sklearn import preprocessing
 
 #%%
 def get_path(file):
@@ -52,6 +53,7 @@ def download_file(url,directory):
             
 #%% 
 def convert_to_numeric(input_target):
+    ''' Convert a single vector of strings to a numeric vector '''
     if input_target.dtype == 'object':
         out_target = np.zeros_like(input_target)
         labels = np.unique(input_target)
@@ -60,7 +62,19 @@ def convert_to_numeric(input_target):
         return out_target.astype(np.float32)
     else:
         return input_target
-    
+
 #%%
-def print_datasets():
-    print(T)
+def one_hot_encode(df):
+    ''' One hot encode coloumns of a matrix that are not float values '''
+    N, d = df.shape
+    output = np.zeros((N,0))
+    for i in range(d):
+        val = df[:,i].reshape(-1,1)
+        try:
+            out = val.astype('float32')
+        except:
+            le = preprocessing.OneHotEncoder()
+            out = le.fit_transform(val)
+            out = out.todense()
+        output = np.concatenate((output, out), axis=1)
+    return output

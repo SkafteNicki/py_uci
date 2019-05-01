@@ -17,5 +17,9 @@ class parkinsons(Dataset):
     def _create_dataframe(self):
         for f in self.files:
             if 'parkinsons_updrs.data' in f:
-                df = pd.read_csv(f, sep=',', header=None)
+                df = pd.read_csv(f, sep=',')
         self.dataframe = df
+        
+    @property
+    def data(self):
+        return self.dataframe.values[:,1:-1]
