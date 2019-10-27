@@ -6,7 +6,7 @@ Created on Sat Mar 23 12:58:16 2019
 """
 
 #%%
-from distutils.core import setup
+from setuptools import setup
 
 #%%
 setup(name = "py_uci",
@@ -15,6 +15,6 @@ setup(name = "py_uci",
                     "datasets from the UCI Machine Learning Reposatory",
       author = "Nicki Skafte Detlefsen",
       author_email = "nsde@dtu.dk",
-      packages = ["py_uci"],
+      packages = ["py_uci", "py_uci.datasets"],
       license = "MIT",
       long_description = open('README.md').read())
